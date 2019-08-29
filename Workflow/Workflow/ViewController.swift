@@ -14,9 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var pennStateLabel: UILabel!
     
     var cheerCount = 0
-    
-    var isEvnCheerCount : Bool = {return cheerCount % 2 == 0}
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
