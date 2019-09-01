@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var weAreLabel: UILabel!
     @IBOutlet weak var pennStateLabel: UILabel!
+    var isEvnCheerCount = true
     
     var cheerCount = 0
         
