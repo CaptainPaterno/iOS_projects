@@ -91,12 +91,13 @@
                                     <action selector="wordLengthChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="0Gf-vc-9tD"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhK-Zy-1Pj">
+                            <button verifyAmbiguity="off" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhK-Zy-1Pj">
                                 <rect key="frame" x="301" y="364" width="93" height="35"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.4823529412" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="93" id="g9p-wu-yMP"/>
+                                    <constraint firstAttribute="width" constant="93" id="x3q-61-Sfe"/>
                                 </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <state key="normal" title="Check">
                                     <color key="titleColor" red="0.0078431372550000003" green="0.1450980392" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -146,16 +147,15 @@
                             <constraint firstItem="Zfn-18-y53" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="SR3-ce-0P4"/>
                             <constraint firstItem="ObL-qn-dzw" firstAttribute="centerX" secondItem="NOH-NA-pL1" secondAttribute="centerX" id="T6w-N5-XuC"/>
                             <constraint firstItem="NOH-NA-pL1" firstAttribute="top" secondItem="mKC-yr-yfo" secondAttribute="bottom" constant="22" id="UNd-D4-PU6"/>
+                            <constraint firstItem="mhK-Zy-1Pj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Xs4-DB-81j"/>
                             <constraint firstItem="ObL-qn-dzw" firstAttribute="top" secondItem="q2K-mL-aKj" secondAttribute="bottom" constant="63" id="Z1p-ly-2eb"/>
                             <constraint firstItem="1U6-gI-ftM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Zk0-kf-8QV"/>
-                            <constraint firstItem="mhK-Zy-1Pj" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="bCB-QT-fZi"/>
-                            <constraint firstItem="Zfn-18-y53" firstAttribute="top" secondItem="mhK-Zy-1Pj" secondAttribute="top" id="dJp-fx-CMb"/>
+                            <constraint firstItem="mhK-Zy-1Pj" firstAttribute="firstBaseline" secondItem="Zfn-18-y53" secondAttribute="baseline" id="aQq-oD-nbn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NOH-NA-pL1" secondAttribute="bottom" constant="6" id="f5k-YT-MSd"/>
                             <constraint firstItem="1U6-gI-ftM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="flp-Nq-8nc"/>
                             <constraint firstItem="q2K-mL-aKj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="hoT-VD-89b"/>
                             <constraint firstItem="UkM-iu-b7j" firstAttribute="centerX" secondItem="x6A-qq-L9l" secondAttribute="centerX" id="iF0-MH-5gv"/>
-                            <constraint firstItem="Zfn-18-y53" firstAttribute="baseline" secondItem="mhK-Zy-1Pj" secondAttribute="firstBaseline" id="kKj-v6-SDK"/>
-                            <constraint firstItem="mhK-Zy-1Pj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="mXz-B9-VcQ"/>
+                            <constraint firstItem="mhK-Zy-1Pj" firstAttribute="top" secondItem="Zfn-18-y53" secondAttribute="top" id="jjh-XJ-W9h"/>
                             <constraint firstItem="UkM-iu-b7j" firstAttribute="top" secondItem="1U6-gI-ftM" secondAttribute="bottom" constant="81" id="pXD-HF-hJc"/>
                             <constraint firstItem="UkM-iu-b7j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="58" id="qtI-dy-BZX"/>
                             <constraint firstItem="x6A-qq-L9l" firstAttribute="centerX" secondItem="q2K-mL-aKj" secondAttribute="centerX" id="zFg-Gj-uKJ"/>
