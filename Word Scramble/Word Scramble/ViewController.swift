@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     var word: String = ""
     var wordInArray = [Character]()
     var numberOfCharactersUnselected: Int = 4
+    var memory = [Int]()
+    var selectedIndex=0
     let wordModel = WordModel()
     
     
@@ -57,7 +59,34 @@ class ViewController: UIViewController {
         for index in 0...characterSelector.numberOfSegments-1 {
             characterSelector.setEnabled(true, forSegmentAt: index)
         }
+        
+        respnse.isHidden = true
     }
+    
+
+    @IBAction func checkAnswer(_ sender: Any) {
+        var isCorrect:Bool = false
+        if userAnswer.text != nil {
+            isCorrect=wordModel.isDefined(userAnswer.text!)
+        }
+        if isCorrect {
+            respnse.text = "Correct!"
+        } else {
+            respnse.text = "Wrong!"
+        }
+        respnse.isHidden=false
+    }
+    
+    
+    @IBAction func clickUndo(_ sender: Any) {
+        characterSelector.setEnabled(true, forSegmentAt: memory.remove(at: 0))
+        userAnswer.text!.removeLast()
+        if memory.isEmpty {
+            undoButton.isEnabled = false
+        }
+    }
+    
+
     
     @IBAction func selectCharacter(_ sender: Any) {
         if userAnswer.text != nil{
@@ -65,11 +94,13 @@ class ViewController: UIViewController {
         } else {
             userAnswer.text = "\(wordInArray[characterSelector.selectedSegmentIndex])"
         }
-        
+        selectedIndex = characterSelector.selectedSegmentIndex
         characterSelector.setEnabled(false, forSegmentAt: characterSelector.selectedSegmentIndex)
+        memory.append(selectedIndex)
         
+    
         characterSelector.selectedSegmentIndex = -1
-        
+        undoButton.isEnabled = true
         
         
     }
