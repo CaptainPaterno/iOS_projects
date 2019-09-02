@@ -49,12 +49,15 @@
                                     <action selector="selectCharacter:" destination="BYZ-38-t0r" eventType="valueChanged" id="7yk-yc-vVg"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfn-18-y53">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfn-18-y53">
                                 <rect key="frame" x="20" y="364" width="93" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.22745098039215686" green="0.4823529411764706" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.2274509804" green="0.4823529412" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Undo">
                                     <color key="titleColor" red="0.0078431372549019607" green="0.14509803921568626" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.0078431372550000003" green="0.1450980392" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="clickUndo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xfU-JO-8Ry"/>
@@ -119,7 +122,7 @@
                         <outlet property="characterSelector" destination="x6A-qq-L9l" id="8uv-yJ-qlI"/>
                         <outlet property="checkButton" destination="mhK-Zy-1Pj" id="i0S-da-DqY"/>
                         <outlet property="newWordButton" destination="ObL-qn-dzw" id="PP9-5n-d7a"/>
-                        <outlet property="respnse" destination="q2K-mL-aKj" id="Yss-Dm-mgf"/>
+                        <outlet property="response" destination="q2K-mL-aKj" id="Yss-Dm-mgf"/>
                         <outlet property="undoButton" destination="Zfn-18-y53" id="r2k-uj-L51"/>
                         <outlet property="userAnswer" destination="UkM-iu-b7j" id="wwR-61-RxF"/>
                         <outlet property="wordLengthSelector" destination="NOH-NA-pL1" id="W9j-qi-Ob0"/>

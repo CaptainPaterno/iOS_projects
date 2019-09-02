@@ -13,10 +13,13 @@ class ViewController: UIViewController {
     var wordLength: Int = 4
     var word: String = ""
     var wordInArray = [Character]()
+    var shuffledWord = ""
     var numberOfCharactersUnselected: Int = 4
     var memory = [Int]()
     var selectedIndex=0
     let wordModel = WordModel()
+    let buttonBlue = UIColor(displayP3Red: 0.227, green: 0.482, blue: 0.792, alpha: 1)
+    let grey: UIColor = UIColor(displayP3Red: 0.333, green: 0.333, blue: 0.333, alpha: 1)
     
     
     @IBOutlet weak var userAnswer: UILabel!
@@ -27,7 +30,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var characterSelector: UISegmentedControl!
     
-    @IBOutlet weak var respnse: UILabel!
+    @IBOutlet weak var response: UILabel!
     
     @IBOutlet weak var newWordButton: UIButton!
     
@@ -44,13 +47,20 @@ class ViewController: UIViewController {
         for index in 1...wordLength{
             characterSelector.insertSegment(withTitle: "", at: index-1, animated: true)
         }
-        
+        userAnswer.text = ""
+        response.isHidden=true
+        setStateToDefault()
+        if memory.isEmpty==false {
+            for _ in 0...memory.count-1{
+                memory.removeFirst()
+            }
+        }
     }
     
     @IBAction func requestNewWord(_ sender: Any) {
         word = wordModel.randomWord
-        wordInArray = Array(word)
-        var shuffledWord = word.shuffled()
+        wordInArray = Array(shuffled)
+        shuffledWord = word.shuffled()
         for index in 1...wordLength{
             characterSelector.setTitle("\(wordInArray[index-1])", forSegmentAt: index-1)
         }
@@ -59,8 +69,8 @@ class ViewController: UIViewController {
         for index in 0...characterSelector.numberOfSegments-1 {
             characterSelector.setEnabled(true, forSegmentAt: index)
         }
-        
-        respnse.isHidden = true
+        setStateToPreparing()
+        response.isHidden = true
     }
     
 
@@ -70,20 +80,22 @@ class ViewController: UIViewController {
             isCorrect=wordModel.isDefined(userAnswer.text!)
         }
         if isCorrect {
-            respnse.text = "Correct!"
+            response.text = "Correct!"
         } else {
-            respnse.text = "Wrong!"
+            response.text = "Wrong!"
         }
-        respnse.isHidden=false
+        response.isHidden=false
+        setStateToDefault()
     }
     
     
     @IBAction func clickUndo(_ sender: Any) {
-        characterSelector.setEnabled(true, forSegmentAt: memory.remove(at: 0))
+        characterSelector.setEnabled(true, forSegmentAt: memory.removeLast())
         userAnswer.text!.removeLast()
         if memory.isEmpty {
-            undoButton.isEnabled = false
+            disableButton(button: undoButton)
         }
+        disableButton(button: checkButton)
     }
     
 
@@ -100,8 +112,56 @@ class ViewController: UIViewController {
         
     
         characterSelector.selectedSegmentIndex = -1
-        undoButton.isEnabled = true
+        if memory.count == wordLength {
+            enableButton(button: checkButton)
+        }
+        enableButton(button: undoButton)
+        setStateToPlaying()
         
+    }
+    
+    func disableButton(button: UIButton){
+        button.backgroundColor = grey
+        button.isEnabled = false
+    }
+    
+    func enableButton(button: UIButton){
+        button.backgroundColor = buttonBlue
+        button.isEnabled = true
+    }
+    
+    func disableSegCtrl(segCtrl: UISegmentedControl){
+        for index in 0...segCtrl.numberOfSegments-1{
+            segCtrl.setEnabled(false, forSegmentAt: index)
+        }
+    }
+    
+    func enableSegCtrl(segCtrl: UISegmentedControl){
+        for index in 0...segCtrl.numberOfSegments-1{
+            segCtrl.setEnabled(true, forSegmentAt: index)
+        }
+    }
+    
+    func setStateToDefault(){
+        disableButton(button: undoButton)
+        disableButton(button: checkButton)
+        disableSegCtrl(segCtrl: characterSelector)
+        newWordButton.isEnabled=true
+        enableSegCtrl(segCtrl: wordLengthSelector)
+    }
+    func setStateToPreparing(){
+        disableButton(button: undoButton)
+        disableButton(button: checkButton)
+        enableSegCtrl(segCtrl: characterSelector)
+        newWordButton.isEnabled=true
+        disableSegCtrl(segCtrl: wordLengthSelector)
+    }
+    
+    
+    func setStateToPlaying(){
+        disableSegCtrl(segCtrl: wordLengthSelector)
+        enableButton(button: undoButton)
+        newWordButton.isEnabled=true
         
     }
     
@@ -110,6 +170,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setStateToDefault()
     }
 
     
