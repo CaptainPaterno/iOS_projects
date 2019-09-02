@@ -83,7 +83,9 @@ class ViewController: UIViewController {
             response.text = "Wrong!"
         }
         response.isHidden=false
+        userAnswer.text=word
         setStateToDefault()
+        
     }
     
     
