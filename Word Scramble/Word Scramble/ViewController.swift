@@ -13,14 +13,14 @@ class ViewController: UIViewController {
     var wordLength: Int = 4
     var word: String = ""
     var wordInArray = [Character]()
-    var shuffledWord = ""
+    var shuffledWord: String = ""
     var numberOfCharactersUnselected: Int = 4
     var memory = [Int]()
     var selectedIndex=0
     let wordModel = WordModel()
     let buttonBlue = UIColor(displayP3Red: 0.227, green: 0.482, blue: 0.792, alpha: 1)
     let grey: UIColor = UIColor(displayP3Red: 0.333, green: 0.333, blue: 0.333, alpha: 1)
-    
+    let newWordOrange=UIColor(displayP3Red: 0.979, green: 0.600, blue: 0.388, alpha: 1)
     
     @IBOutlet weak var userAnswer: UILabel!
     
@@ -50,17 +50,14 @@ class ViewController: UIViewController {
         userAnswer.text = ""
         response.isHidden=true
         setStateToDefault()
-        if memory.isEmpty==false {
-            for _ in 0...memory.count-1{
-                memory.removeFirst()
-            }
-        }
+        cleanMemory()
+
     }
     
     @IBAction func requestNewWord(_ sender: Any) {
         word = wordModel.randomWord
-        wordInArray = Array(shuffled)
-        shuffledWord = word.shuffled()
+        shuffledWord = String(word.shuffled())
+        wordInArray = Array(shuffledWord)
         for index in 1...wordLength{
             characterSelector.setTitle("\(wordInArray[index-1])", forSegmentAt: index-1)
         }
@@ -71,6 +68,7 @@ class ViewController: UIViewController {
         }
         setStateToPreparing()
         response.isHidden = true
+        cleanMemory()
     }
     
 
@@ -98,7 +96,14 @@ class ViewController: UIViewController {
         disableButton(button: checkButton)
     }
     
-
+    func cleanMemory(){
+        if memory.isEmpty==false {
+            for _ in 0...memory.count-1{
+                memory.removeFirst()
+            }
+        }
+        
+    }
     
     @IBAction func selectCharacter(_ sender: Any) {
         if userAnswer.text != nil{
@@ -147,13 +152,15 @@ class ViewController: UIViewController {
         disableButton(button: checkButton)
         disableSegCtrl(segCtrl: characterSelector)
         newWordButton.isEnabled=true
+        newWordButton.backgroundColor=newWordOrange
         enableSegCtrl(segCtrl: wordLengthSelector)
     }
     func setStateToPreparing(){
         disableButton(button: undoButton)
         disableButton(button: checkButton)
         enableSegCtrl(segCtrl: characterSelector)
-        newWordButton.isEnabled=true
+        newWordButton.isEnabled=false
+        newWordButton.backgroundColor=grey
         disableSegCtrl(segCtrl: wordLengthSelector)
     }
     
@@ -161,7 +168,8 @@ class ViewController: UIViewController {
     func setStateToPlaying(){
         disableSegCtrl(segCtrl: wordLengthSelector)
         enableButton(button: undoButton)
-        newWordButton.isEnabled=true
+        newWordButton.isEnabled=false
+        newWordButton.backgroundColor=grey
         
     }
     
