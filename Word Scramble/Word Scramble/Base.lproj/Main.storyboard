@@ -33,18 +33,21 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bordered" translatesAutoresizingMaskIntoConstraints="NO" id="x6A-qq-L9l">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bordered" translatesAutoresizingMaskIntoConstraints="NO" id="x6A-qq-L9l">
                                 <rect key="frame" x="34" y="440" width="353" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                 <segments>
-                                    <segment title="0"/>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
-                                    <segment title="3"/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                    <segment title=""/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.62745098039215685" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="selectCharacter:" destination="BYZ-38-t0r" eventType="valueChanged" id="7yk-yc-vVg"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfn-18-y53">
                                 <rect key="frame" x="20" y="364" width="93" height="35"/>
@@ -54,7 +57,7 @@
                                     <color key="titleColor" red="0.0078431372549019607" green="0.14509803921568626" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkM-iu-b7j">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkM-iu-b7j">
                                 <rect key="frame" x="58" y="190" width="304" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.62745098039215685" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -71,6 +74,9 @@
                                     <segment title="6 Characters"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="wordLengthChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="0Gf-vc-9tD"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhK-Zy-1Pj">
                                 <rect key="frame" x="301" y="364" width="93" height="35"/>
@@ -88,6 +94,9 @@
                                 <state key="normal" title="New Word">
                                     <color key="titleColor" red="0.47450980392156861" green="0.17254901960784313" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="requestNewWord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AYQ-h0-2PP"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Correct!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2K-mL-aKj">
                                 <rect key="frame" x="47" y="537" width="326" height="40"/>
@@ -101,7 +110,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="wordLengthSelector" destination="NOH-NA-pL1" id="F65-Hp-tSG"/>
+                        <outlet property="characterSelector" destination="x6A-qq-L9l" id="8uv-yJ-qlI"/>
+                        <outlet property="checkButton" destination="mhK-Zy-1Pj" id="i0S-da-DqY"/>
+                        <outlet property="newWordButton" destination="ObL-qn-dzw" id="PP9-5n-d7a"/>
+                        <outlet property="respnse" destination="q2K-mL-aKj" id="Yss-Dm-mgf"/>
+                        <outlet property="undoButton" destination="Zfn-18-y53" id="r2k-uj-L51"/>
+                        <outlet property="userAnswer" destination="UkM-iu-b7j" id="wwR-61-RxF"/>
+                        <outlet property="wordLengthSelector" destination="NOH-NA-pL1" id="W9j-qi-Ob0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
