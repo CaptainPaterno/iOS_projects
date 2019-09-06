@@ -14,7 +14,7 @@ class WordModel {
     private var currentWordSize = 4
     
     init() {
-        let wordSizes = [4,5,6]   // 3 lengths of words supported
+        let wordSizes = [4,5,6,7,8]   // 3 lengths of words supported
         var _words : [Int : [String]] = [:]
         
         for i in wordSizes {
@@ -56,4 +56,20 @@ class WordModel {
         }
     }
     
+    func correctResponse() -> String{
+        setCurrentWordSize(newSize: 7)
+        let theWords = words[currentWordSize]!
+        let bound = theWords.count-1
+        let index = Int(arc4random_uniform(UInt32(bound)))
+        return theWords[index]
+        
+    }
+    
+    func incorrectResponse() -> String{
+        setCurrentWordSize(newSize: 8)
+        let theWords = words[currentWordSize]!
+        let bound = theWords.count-1
+        let index = Int(arc4random_uniform(UInt32(bound)))
+        return theWords[index]
+    }
 }

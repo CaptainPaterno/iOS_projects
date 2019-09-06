@@ -17,12 +17,16 @@ class ViewController: UIViewController {
     var numberOfCharactersUnselected: Int = 4
     var memory = [Int]()
     var selectedIndex=0
+    var numberOfQuestion: Int = 0
+    var numberOfCorrect: Int = 0
     let wordModel = WordModel()
     let buttonBlue = UIColor(displayP3Red: 0.227, green: 0.482, blue: 0.792, alpha: 1)
     let grey: UIColor = UIColor(displayP3Red: 0.333, green: 0.333, blue: 0.333, alpha: 1)
     let newWordOrange=UIColor(displayP3Red: 0.979, green: 0.600, blue: 0.388, alpha: 1)
     
     @IBOutlet weak var userAnswer: UILabel!
+    
+    @IBOutlet weak var questionCounter: UILabel!
     
     @IBOutlet weak var undoButton: UIButton!
     
@@ -51,10 +55,10 @@ class ViewController: UIViewController {
         response.isHidden=true
         setStateToDefault()
         cleanMemory()
-
     }
     
     @IBAction func requestNewWord(_ sender: Any) {
+        wordModel.setCurrentWordSize(newSize: wordLength)
         word = wordModel.randomWord
         shuffledWord = String(word.shuffled())
         wordInArray = Array(shuffledWord)
@@ -78,12 +82,15 @@ class ViewController: UIViewController {
             isCorrect=wordModel.isDefined(userAnswer.text!)
         }
         if isCorrect {
-            response.text = "Correct!"
+            response.text = wordModel.correctResponse()
+            numberOfCorrect = numberOfCorrect + 1
         } else {
-            response.text = "Wrong!"
+            response.text = wordModel.incorrectResponse()
         }
         response.isHidden=false
+        numberOfQuestion=numberOfQuestion+1
         userAnswer.text=word
+        questionCounterUpdate()
         setStateToDefault()
         
     }
@@ -104,6 +111,11 @@ class ViewController: UIViewController {
                 memory.removeFirst()
             }
         }
+        
+    }
+    
+    func questionCounterUpdate(){
+        questionCounter.text=String(numberOfCorrect)+" out of "+String(numberOfQuestion)+" correct"
         
     }
     
