@@ -57,7 +57,7 @@ class WordModel {
     }
     
     func correctResponse() -> String{
-        setCurrentWordSize(newSize: 7)
+        setCurrentWordSize(newSize: 7)//Words7 are responses for correct answer
         let theWords = words[currentWordSize]!
         let bound = theWords.count-1
         let index = Int(arc4random_uniform(UInt32(bound)))
@@ -66,7 +66,7 @@ class WordModel {
     }
     
     func incorrectResponse() -> String{
-        setCurrentWordSize(newSize: 8)
+        setCurrentWordSize(newSize: 8)//Words8 are responses for incorrect answer
         let theWords = words[currentWordSize]!
         let bound = theWords.count-1
         let index = Int(arc4random_uniform(UInt32(bound)))
