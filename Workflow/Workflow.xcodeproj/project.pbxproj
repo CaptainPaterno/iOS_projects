@@ -13,6 +13,7 @@
 		9278F56123182B1B0066FDF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9278F56023182B1B0066FDF9 /* Assets.xcassets */; };
 		9278F56423182B1B0066FDF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9278F56223182B1B0066FDF9 /* LaunchScreen.storyboard */; };
 		9278F56F23182B1B0066FDF9 /* WorkflowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9278F56E23182B1B0066FDF9 /* WorkflowTests.swift */; };
+		92BE9F5B2321619E009063D5 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BE9F5A2321619E009063D5 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		9278F56A23182B1B0066FDF9 /* WorkflowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkflowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9278F56E23182B1B0066FDF9 /* WorkflowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowTests.swift; sourceTree = "<group>"; };
 		9278F57023182B1B0066FDF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92BE9F5A2321619E009063D5 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = "../../../../../System/Volumes/Data/Users/yixuanzhang/projects-yuz313/Workflow/Workflow/Storyboard.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				9278F56023182B1B0066FDF9 /* Assets.xcassets */,
 				9278F56223182B1B0066FDF9 /* LaunchScreen.storyboard */,
 				9278F56523182B1B0066FDF9 /* Info.plist */,
+				92BE9F5A2321619E009063D5 /* Storyboard.storyboard */,
 			);
 			path = Workflow;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9278F56423182B1B0066FDF9 /* LaunchScreen.storyboard in Resources */,
+				92BE9F5B2321619E009063D5 /* Storyboard.storyboard in Resources */,
 				9278F56123182B1B0066FDF9 /* Assets.xcassets in Resources */,
 				9278F55F23182B1A0066FDF9 /* Main.storyboard in Resources */,
 			);
