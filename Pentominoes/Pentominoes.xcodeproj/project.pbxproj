@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92583E87232D5C5800AEC6C6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92583E86232D5C5800AEC6C6 /* Colors.swift */; };
 		92830FA2232C11590064F30D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92830FA1232C11590064F30D /* AppDelegate.swift */; };
 		92830FA4232C11590064F30D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92830FA3232C11590064F30D /* ViewController.swift */; };
 		92830FA7232C11590064F30D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92830FA5232C11590064F30D /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		92583E86232D5C5800AEC6C6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = "../../../../../System/Volumes/Data/Users/yixuanzhang/projects-yuz313/Pentominoes/Pentominoes/Colors.swift"; sourceTree = "<group>"; };
 		92830F9E232C11590064F30D /* Pentominoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pentominoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92830FA1232C11590064F30D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92830FA3232C11590064F30D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +83,6 @@
 		92830FA0232C11590064F30D /* Pentominoes */ = {
 			isa = PBXGroup;
 			children = (
-				92830FF5232C13FB0064F30D /* New Group */,
 				92830FD3232C12A70064F30D /* Solutions.plist */,
 				92830FC9232C12A70064F30D /* PentominoModel.swift */,
 				92830FA1232C11590064F30D /* AppDelegate.swift */,
@@ -90,6 +91,7 @@
 				92830FA8232C115B0064F30D /* Assets.xcassets */,
 				92830FAA232C115B0064F30D /* LaunchScreen.storyboard */,
 				92830FAD232C115B0064F30D /* Info.plist */,
+				92583E86232D5C5800AEC6C6 /* Colors.swift */,
 			);
 			path = Pentominoes;
 			sourceTree = "<group>";
@@ -101,13 +103,6 @@
 				92830FB8232C115B0064F30D /* Info.plist */,
 			);
 			path = PentominoesTests;
-			sourceTree = "<group>";
-		};
-		92830FF5232C13FB0064F30D /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92830FA4232C11590064F30D /* ViewController.swift in Sources */,
+				92583E87232D5C5800AEC6C6 /* Colors.swift in Sources */,
 				92830FA2232C11590064F30D /* AppDelegate.swift in Sources */,
 				92830FE3232C12A70064F30D /* PentominoModel.swift in Sources */,
 			);

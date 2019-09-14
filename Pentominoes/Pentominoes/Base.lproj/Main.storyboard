@@ -39,36 +39,27 @@
                                                         <state key="normal" backgroundImage="Board0button">
                                                             <color key="titleShadowColor" red="0.2274509804" green="0.4823529412" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="7"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="changeBoard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="og9-1b-ivx"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kzr-Rx-b40">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kzr-Rx-b40">
                                                         <rect key="frame" x="24.5" y="143" width="105" height="105"/>
                                                         <state key="normal" backgroundImage="Board1button">
                                                             <color key="titleShadowColor" red="0.2274509804" green="0.4823529412" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="7"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="changeBoard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H0r-23-iHo"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BS-F0-yAw">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BS-F0-yAw">
                                                         <rect key="frame" x="24.5" y="286.5" width="105" height="105"/>
                                                         <state key="normal" backgroundImage="Board2button">
                                                             <color key="titleShadowColor" red="0.2274509804" green="0.4823529412" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="7"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="changeBoard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ace-2U-w7u"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xpm-yv-6X2">
                                                         <rect key="frame" x="47" y="429.5" width="60" height="30"/>
@@ -92,41 +83,32 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bct-cw-dSt">
                                                 <rect key="frame" x="574" y="20" width="154" height="459.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bf-T4-YEW">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bf-T4-YEW">
                                                         <rect key="frame" x="24.5" y="0.0" width="105" height="105"/>
                                                         <state key="normal" backgroundImage="Board3button">
                                                             <color key="titleShadowColor" red="0.2274509804" green="0.4823529412" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="7"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="changeBoard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="he5-av-9fr"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMb-ud-rPZ">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMb-ud-rPZ">
                                                         <rect key="frame" x="24.5" y="143" width="105" height="105"/>
                                                         <state key="normal" backgroundImage="Board4button">
                                                             <color key="titleShadowColor" red="0.2274509804" green="0.4823529412" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="7"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="changeBoard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ecv-a7-1Nt"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9KW-sQ-iaT">
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9KW-sQ-iaT">
                                                         <rect key="frame" x="24.5" y="286.5" width="105" height="105"/>
                                                         <state key="normal" backgroundImage="Board5button">
                                                             <color key="titleShadowColor" red="0.2274509804" green="0.4823529412" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="7"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="changeBoard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Yv-gx-A6v"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="esb-9y-dE6">
                                                         <rect key="frame" x="47" y="429.5" width="60" height="30"/>
@@ -226,16 +208,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="Board0" destination="gT5-00-bkE" id="YZh-j0-tpK"/>
-                        <outlet property="Board1" destination="Kzr-Rx-b40" id="m8b-Vp-Igu"/>
-                        <outlet property="Board2" destination="0BS-F0-yAw" id="qfO-VL-RKc"/>
-                        <outlet property="Board3" destination="3Bf-T4-YEW" id="41x-UY-VAR"/>
-                        <outlet property="Board4" destination="iMb-ud-rPZ" id="oYC-mZ-XKp"/>
-                        <outlet property="Board5" destination="9KW-sQ-iaT" id="Vbn-NK-Kjh"/>
-                        <outlet property="MainBoard" destination="FWZ-qV-D5c" id="Mb7-My-KT6"/>
-                        <outlet property="hint" destination="fz6-kI-4MV" id="ffd-Uf-Wjw"/>
-                        <outlet property="reset" destination="esb-9y-dE6" id="Eo5-No-u8o"/>
-                        <outlet property="solve" destination="Xpm-yv-6X2" id="bPU-ec-Str"/>
+                        <outlet property="elementArea" destination="1Nl-5e-GvO" id="UZi-gm-fGp"/>
+                        <outlet property="mainBoard" destination="FWZ-qV-D5c" id="a8B-0w-LEV"/>
+                        <outletCollection property="boards" destination="gT5-00-bkE" collectionClass="NSMutableArray" id="vzF-Rs-lRC"/>
+                        <outletCollection property="boards" destination="Kzr-Rx-b40" collectionClass="NSMutableArray" id="ebW-yd-4zo"/>
+                        <outletCollection property="boards" destination="0BS-F0-yAw" collectionClass="NSMutableArray" id="sik-BK-JsK"/>
+                        <outletCollection property="boards" destination="3Bf-T4-YEW" collectionClass="NSMutableArray" id="S7P-xL-5Py"/>
+                        <outletCollection property="boards" destination="iMb-ud-rPZ" collectionClass="NSMutableArray" id="NaF-PV-A0z"/>
+                        <outletCollection property="boards" destination="9KW-sQ-iaT" collectionClass="NSMutableArray" id="SRO-Ik-TmE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
