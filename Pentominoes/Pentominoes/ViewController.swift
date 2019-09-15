@@ -10,10 +10,11 @@ import UIKit
 
 
 class PentominoView: UIImageView{
-    
+    var shape:String=""
     convenience init(shape: String) {
         self.init(frame: CGRect.zero)
         self.image=UIImage(named: "Piece"+shape)
+        self.shape=shape
     }
     
     override init(frame: CGRect) {
@@ -39,11 +40,23 @@ class ViewController: UIViewController {
     let PentominoViews : [PentominoView]
     var Pentominoes: [Pentomino]=[]
     let model=Model()
+    var currentBoard : Int = 0
+    var counter:Int=0
+    var coverView:UIView=UIView(frame: CGRect.zero)
+    var isinitialized=false
+    var isReset=false
     
     
+    
+    @IBOutlet weak var upperView: UIView!
+    @IBOutlet weak var safeView: UIView!
     @IBOutlet weak var mainBoard: UIImageView!
     @IBOutlet var boards: [UIButton]!
     @IBOutlet weak var elementArea: UIView!
+    
+    @IBOutlet weak var solveButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var hintButton: UIButton!
     
     required init?(coder aDecoder: NSCoder) {
         
@@ -69,37 +82,54 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         resetBoardsButton()
         setBoardButton(index: 0)
-        for aPentominoView in PentominoViews{
-            elementArea.addSubview(aPentominoView)
-        }
-        print(model.allSolutions[0])
-        let unitX=(elementArea.bounds.size.width-40)/6
-        let unitY=(elementArea.bounds.size.height-40)/2
-        for i in 0...5 {
-            let aPentominoViews = PentominoViews[i]
-            let x:Double = (Double(20) + Double(i) * Double(unitX))
-            let y:Double = 20
-            let height:Double = model.heightList[i]
-            let width:Double = model.widthList[i]
-            let frame = CGRect(x: x, y: y, width: width, height: height)
-            aPentominoViews.frame = frame
-        }
-        for i in 6...11 {
-            let aPentominoViews = PentominoViews[i]
-            let x:Double =  Double(Double(20) + Double(i-6) * Double(unitX))
-            let y:Double = 20+Double(unitY)
-            let height = model.heightList[i]
-            let width = model.widthList[i]
-            let frame = CGRect(x: x, y: y, width: width, height: height)
-            aPentominoViews.frame = frame
-        }
-        for aPentominoview in PentominoViews{
-            Pentominoes.append(Pentomino(pentominoView: aPentominoview))
-        }
+        disableButton(button: solveButton)
+        disableButton(button: resetButton)
+        disableButton(button: hintButton)
+        
+        
+        
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        if counter != 1{
+            for aPentominoView in PentominoViews{
+                elementArea.addSubview(aPentominoView)
+            }
+            let unitX=(elementArea.bounds.size.width-40)/6
+            let unitY=(elementArea.bounds.size.height-40)/2
+            for i in 0...5 {
+                let aPentominoViews = PentominoViews[i]
+                let x:Double = (Double(20) + Double(i) * Double(unitX))
+                let y:Double = 20
+                let height:Double = model.heightList[i]
+                let width:Double = model.widthList[i]
+                let frame = CGRect(x: x, y: y, width: width, height: height)
+                aPentominoViews.frame = frame
+            }
+            print("1")
+            for i in 6...11 {
+                let aPentominoViews = PentominoViews[i]
+                let x:Double =  Double(Double(20) + Double(i-6) * Double(unitX))
+                let y:Double = 20+Double(unitY)
+                let height = model.heightList[i]
+                let width = model.widthList[i]
+                let frame = CGRect(x: x, y: y, width: width, height: height)
+                aPentominoViews.frame = frame
+            }
+            for aPentominoview in PentominoViews{
+                Pentominoes.append(Pentomino(pentominoView: aPentominoview))
+            }
+            counter=counter+1
+            
+            
+            
+        }
+        
+        
+        
         
     }
     
@@ -109,6 +139,86 @@ class ViewController: UIViewController {
         mainBoard.image = UIImage(named: "Board"+"\(index)")
         resetBoardsButton()
         setBoardButton(index: index)
+        currentBoard=index
+        if index==0{
+            disableButton(button: solveButton)
+            disableButton(button: resetButton)
+            disableButton(button: hintButton)
+        }
+        else
+        {
+            enableButton(button: solveButton)
+            enableButton(button: hintButton)
+        }
+        coverView.frame.size.width=420
+        coverView.frame.size.height=420
+        safeView.addSubview(coverView)
+        coverView.center=CGPoint(x: safeView.frame.size.width/2, y: upperView.frame.size.height/2+20)
+    }
+    @IBAction func solve(_ sender: Any) {
+        if solveButton.isEnabled==true{
+            disableButton(button: solveButton)
+            enableButton(button: resetButton)
+        }
+        else{
+            disableButton(button: resetButton)
+            enableButton(button: solveButton)
+        }
+        for aPentomino in Pentominoes{
+            flip(aPentomino: aPentomino)
+            rotate(aPentomino: aPentomino)
+            translate(aPentomino: aPentomino)
+            
+        }
+        
+    }
+    
+    func translate(aPentomino:Pentomino){
+        aPentomino.setCorrectPosition(boardIndex: currentBoard)
+        let isMovingToMainBoard = aPentomino.pentominoView.superview == self.elementArea
+        let superView = isMovingToMainBoard ? self.coverView : self.elementArea
+        
+        moveView(aPentomino.pentominoView, toSuperview: superView!)
+        
+        let newCenter = isMovingToMainBoard ? CGPoint(x: CGFloat(aPentomino.positionOnBoard.x*30) + aPentomino.pentominoView.frame.width/2, y: CGFloat(aPentomino.positionOnBoard.y*30) + aPentomino.pentominoView.frame.height/2) : CGPoint(x: aPentomino.positionOffBoard.centerX, y: aPentomino.positionOffBoard.centerY)
+        
+        UIView.animate(withDuration: 2.0, animations: { () -> Void in
+            aPentomino.pentominoView.center = newCenter
+        })
+    }
+    func rotate(aPentomino:Pentomino){
+        let rotate = CGAffineTransform(rotationAngle: CGFloat(Double(aPentomino.positionOnBoard.rotations)*Double.pi*0.5))
+        UIView.animate(withDuration: 2, delay: 0, animations: { aPentomino.pentominoView.transform = rotate}, completion: {(finished:Bool) in
+        })
+        
+    }
+    func flip(aPentomino:Pentomino){
+        
+        if isReset==false{
+            if aPentomino.positionOnBoard.isFlipped==true{
+                let flip = CGAffineTransform(scaleX: -1, y: 1)
+                UIView.animate(withDuration: 2, delay: 0, options: UIView.AnimationOptions.transitionFlipFromLeft, animations: { aPentomino.pentominoView.transform = flip}, completion: {(finished:Bool) in
+                    self.isReset=true
+                })
+            }
+        }
+        else{
+            UIView.animate(withDuration: 2, delay: 0, options: UIView.AnimationOptions.transitionFlipFromLeft, animations: { aPentomino.pentominoView.transform = CGAffineTransform.identity}, completion: {(finished:Bool) in
+                self.isReset=false
+            })
+        }
+        
+    }
+    
+    func moveView(_ view:UIView, toSuperview superView: UIView) {
+        let newCenter = superView.convert(view.center, from: view.superview)
+        view.center = newCenter
+        superView.addSubview(view)
+        safeView.bringSubviewToFront(superView)
+        safeView.clipsToBounds=false
+        elementArea.clipsToBounds=false
+        coverView.clipsToBounds=false
+        
     }
     
     func resetBoardsButton(){
@@ -118,10 +228,23 @@ class ViewController: UIViewController {
             boards[index].layer.borderWidth=4
             boards[index].layer.borderColor=colors.edgeBlue.cgColor
         }
+        
     }
     
     func setBoardButton(index: Int){
         boards[index].layer.borderColor=colors.edgeRed.cgColor
+        
+    }
+    
+    func disableButton(button:UIButton){
+        button.isEnabled=false
+        button.backgroundColor = colors.disabledGrey
+        
+    }
+    
+    func enableButton(button:UIButton){
+        button.isEnabled=true
+        button.backgroundColor = colors.enableWhite
         
     }
     

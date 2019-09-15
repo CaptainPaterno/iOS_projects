@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pentominoes/ViewController.swift"
+            timestampString = "590231099.4862241"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "rotate(aPentomino:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pentominoes/ViewController.swift"
+            timestampString = "590231099.486518"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "rotate(aPentomino:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pentominoes.ViewController.rotate(aPentomino: Pentominoes.Pentomino) -&gt; ()"
+                  moduleName = "Pentominoes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yixuanzhang/projects-yuz313/Pentominoes/Pentominoes/ViewController.swift"
+                  timestampString = "590230797.628654"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "215">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Pentominoes.ViewController.rotate(aPentomino: Pentominoes.Pentomino) -&gt; ()"
+                  moduleName = "Pentominoes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yixuanzhang/projects-yuz313/Pentominoes/Pentominoes/ViewController.swift"
+                  timestampString = "590230797.631096"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "159">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Bool) -&gt; () in Pentominoes.ViewController.rotate(aPentomino: Pentominoes.Pentomino) -&gt; ()"
+                  moduleName = "Pentominoes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yixuanzhang/projects-yuz313/Pentominoes/Pentominoes/ViewController.swift"
+                  timestampString = "590230797.6332361"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

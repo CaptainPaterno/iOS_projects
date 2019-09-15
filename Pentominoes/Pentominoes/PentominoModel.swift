@@ -34,6 +34,8 @@ typealias Solutions = [Solution]
 
 
 class Pentomino{
+    let model=Model()
+    var currentBoard : Int = 0
     var isOnBoard : Bool
     var positionOnBoard=PositionOnBoard(x: 0, y: 0, isFlipped: false, rotations: 0)
     var positionOffBoard=PositionOffBoard(centerX: 0, centerY: 0)
@@ -47,6 +49,14 @@ class Pentomino{
         self.positionOffBoard.centerX = Double(self.pentominoView.center.x)
         self.positionOffBoard.centerY = Double(self.pentominoView.center.y)
         self.positionOnBoard=PositionOnBoard(x: 0, y: 0, isFlipped: false, rotations: 0)
+    }
+    
+    func setCorrectPosition(boardIndex:Int){
+        self.currentBoard=boardIndex-1
+        self.positionOnBoard.x=model.allSolutions[currentBoard][pentominoView.shape]!.x
+        self.positionOnBoard.y=model.allSolutions[currentBoard][pentominoView.shape]!.y
+        self.positionOnBoard.isFlipped=model.allSolutions[currentBoard][pentominoView.shape]!.isFlipped
+        self.positionOnBoard.rotations=model.allSolutions[currentBoard][pentominoView.shape]!.rotations
     }
     
 }
