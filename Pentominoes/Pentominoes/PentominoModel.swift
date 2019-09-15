@@ -9,7 +9,18 @@
 import Foundation
 
 // identifies placement of a single pentomino on a board
-struct Position : Codable {
+
+struct PentominoSize {
+    var width : Int
+    var length : Int
+}
+
+struct PositionOffBoard {
+    var centerX: Double
+    var centerY: Double
+}
+
+struct PositionOnBoard : Codable {
     var x : Int
     var y : Int
     var isFlipped : Bool
@@ -18,11 +29,32 @@ struct Position : Codable {
 
 // A solution is a dictionary mapping piece names ("T", "F", etc) to positions
 // All solutions are read in and maintained in an array
-typealias Solution = [String:Position]
+typealias Solution = [String:PositionOnBoard]
 typealias Solutions = [Solution]
 
-class Model {
 
+class Pentomino{
+    var isOnBoard : Bool
+    var positionOnBoard=PositionOnBoard(x: 0, y: 0, isFlipped: false, rotations: 0)
+    var positionOffBoard=PositionOffBoard(centerX: 0, centerY: 0)
+    var pentominoView: PentominoView
+    
+    
+    init(pentominoView:PentominoView) {
+        self.isOnBoard=false
+        self.pentominoView=pentominoView
+        self.positionOffBoard=PositionOffBoard(centerX: 0, centerY: 0)
+        self.positionOffBoard.centerX = Double(self.pentominoView.center.x)
+        self.positionOffBoard.centerY = Double(self.pentominoView.center.y)
+        self.positionOnBoard=PositionOnBoard(x: 0, y: 0, isFlipped: false, rotations: 0)
+    }
+    
+}
+
+class Model {
+    let characterList: [String] = ["F","I","L","N","P","T","U","V","W","X","Y","Z"]
+    let widthList: [Double] = [90,30,60,60,60,90,90,90,90,90,60,90]
+    let heightList: [Double] = [90,150,120,120,90,90,60,90,90,90,120,90]
     let allSolutions : Solutions //[[String:[String:Int]]]
     init () {
         let mainBundle = Bundle.main
@@ -35,6 +67,7 @@ class Model {
         } catch {
             print(error)
             allSolutions = []
+            print(allSolutions)
         }
     }
 
