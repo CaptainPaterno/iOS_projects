@@ -154,6 +154,7 @@ class ViewController: UIViewController {
         coverView.frame.size.height=420
         safeView.addSubview(coverView)
         coverView.center=CGPoint(x: safeView.frame.size.width/2, y: upperView.frame.size.height/2+20)
+        
     }
     @IBAction func solve(_ sender: Any) {
         if solveButton.isEnabled==true{
@@ -169,9 +170,15 @@ class ViewController: UIViewController {
             rotateAndFlip(aPentomino: aPentomino)
             translate(aPentomino: aPentomino)
         }
+        if isReset{
+            enableBoardChange()
+        }else{
+            disableBoardChange()
+        }
         isReset = !isReset
         
     }
+    
     
     func translate(aPentomino:Pentomino){
         aPentomino.setCorrectPosition(boardIndex: currentBoard)
@@ -249,7 +256,24 @@ class ViewController: UIViewController {
         
     }
     
+    func disableBoardChange(){
+        for board in boards{
+            board.isEnabled=false
+            if board.layer.borderColor==colors.edgeBlue.cgColor{
+                board.layer.borderColor=colors.disabledGrey.cgColor
+            }
+        }
+        
+    }
     
+    func enableBoardChange(){
+        for board in boards{
+            board.isEnabled=true
+            if board.layer.borderColor==colors.disabledGrey.cgColor{
+                board.layer.borderColor=colors.edgeBlue.cgColor
+            }
+        }
+    }
     
     
     
