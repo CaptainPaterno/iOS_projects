@@ -165,11 +165,11 @@ class ViewController: UIViewController {
             enableButton(button: solveButton)
         }
         for aPentomino in Pentominoes{
-            flip(aPentomino: aPentomino)
-            rotate(aPentomino: aPentomino)
+            aPentomino.setCorrectPosition(boardIndex: currentBoard)
+            rotateAndFlip(aPentomino: aPentomino)
             translate(aPentomino: aPentomino)
-            
         }
+        isReset = !isReset
         
     }
     
@@ -186,29 +186,30 @@ class ViewController: UIViewController {
             aPentomino.pentominoView.center = newCenter
         })
     }
-    func rotate(aPentomino:Pentomino){
-        let rotate = CGAffineTransform(rotationAngle: CGFloat(Double(aPentomino.positionOnBoard.rotations)*Double.pi*0.5))
-        UIView.animate(withDuration: 2, delay: 0, animations: { aPentomino.pentominoView.transform = rotate}, completion: {(finished:Bool) in
-        })
+    
+    var i:Int=0
+    
+    func rotateAndFlip(aPentomino:Pentomino){
+        var transform = aPentomino.pentominoView.transform
         
-    }
-    func flip(aPentomino:Pentomino){
+            
+        transform=transform.rotated(by: CGFloat(Double(aPentomino.positionOnBoard.rotations)*Double.pi/2))
+        
+        if aPentomino.positionOnBoard.isFlipped==true{
+            transform=transform.scaledBy(x: -1, y: 1)
+        }
+            
         
         if isReset==false{
-            if aPentomino.positionOnBoard.isFlipped==true{
-                let flip = CGAffineTransform(scaleX: -1, y: 1)
-                UIView.animate(withDuration: 2, delay: 0, options: UIView.AnimationOptions.transitionFlipFromLeft, animations: { aPentomino.pentominoView.transform = flip}, completion: {(finished:Bool) in
-                    self.isReset=true
-                })
-            }
+        UIView.animate(withDuration: 1,animations: {aPentomino.pentominoView.transform=transform})
+        
         }
         else{
-            UIView.animate(withDuration: 2, delay: 0, options: UIView.AnimationOptions.transitionFlipFromLeft, animations: { aPentomino.pentominoView.transform = CGAffineTransform.identity}, completion: {(finished:Bool) in
-                self.isReset=false
-            })
+            UIView.animate(withDuration: 1,animations: {aPentomino.pentominoView.transform=CGAffineTransform.identity})
         }
-        
+
     }
+    
     
     func moveView(_ view:UIView, toSuperview superView: UIView) {
         let newCenter = superView.convert(view.center, from: view.superview)
