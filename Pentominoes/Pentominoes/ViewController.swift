@@ -109,7 +109,6 @@ class ViewController: UIViewController {
                 let frame = CGRect(x: x, y: y, width: width, height: height)
                 aPentominoViews.frame = frame
             }
-            print("1")
             for i in 6...11 {
                 let aPentominoViews = PentominoViews[i]
                 let x:Double =  Double(Double(20) + Double(i-6) * Double(unitX))
