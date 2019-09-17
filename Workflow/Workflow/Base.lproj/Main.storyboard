@@ -68,28 +68,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tTQ-Ag-Uul">
-                                <rect key="frame" x="525" y="143" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.050980392159999999" green="0.18823529410000001" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="Ep2-ui-McS"/>
-                                    <constraint firstAttribute="width" constant="240" id="PXJ-xk-2M2"/>
-                                    <constraint firstAttribute="height" constant="128" id="ZIO-Ba-JjK"/>
-                                    <constraint firstAttribute="height" constant="128" id="qA0-XI-H5g"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="PXJ-xk-2M2"/>
-                                        <exclude reference="qA0-XI-H5g"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular">
-                                    <mask key="constraints">
-                                        <exclude reference="PXJ-xk-2M2"/>
-                                        <exclude reference="qA0-XI-H5g"/>
-                                    </mask>
-                                </variation>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxX-ad-AgA">
                                 <rect key="frame" x="164" y="143" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.050980392159999999" green="0.18823529410000001" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -119,6 +97,33 @@
                                         <exclude reference="xLP-Ka-V8T"/>
                                     </mask>
                                 </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tTQ-Ag-Uul">
+                                <rect key="frame" x="525" y="143" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.050980392159999999" green="0.18823529410000001" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Ep2-ui-McS"/>
+                                    <constraint firstAttribute="width" constant="240" id="PXJ-xk-2M2"/>
+                                    <constraint firstAttribute="height" constant="128" id="ZIO-Ba-JjK"/>
+                                    <constraint firstAttribute="height" constant="128" id="qA0-XI-H5g"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PXJ-xk-2M2"/>
+                                        <exclude reference="qA0-XI-H5g"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="constraints">
+                                        <exclude reference="PXJ-xk-2M2"/>
+                                        <exclude reference="qA0-XI-H5g"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvK-4S-bYJ">
+                                <rect key="frame" x="328" y="7" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
