@@ -76,9 +76,38 @@ class ViewController: UIViewController {
         
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        for aPentominoView in PentominoViews{
+            elementArea.addSubview(aPentominoView)
+        }
+        let unitX=(elementArea.bounds.size.width-40)/6
+        let unitY=(elementArea.bounds.size.height-40)/2
+        for i in 0...5 {
+            let aPentominoViews = PentominoViews[i]
+            let x:Double = (Double(20) + Double(i) * Double(unitX))
+            let y:Double = 20
+            let height:Double = model.heightList[i]
+            let width:Double = model.widthList[i]
+            let frame = CGRect(x: x, y: y, width: width, height: height)
+            aPentominoViews.frame = frame
+        }
+        for i in 6...11 {
+            let aPentominoViews = PentominoViews[i]
+            let x:Double =  Double(Double(20) + Double(i-6) * Double(unitX))
+            let y:Double = 20+Double(unitY)
+            let height = model.heightList[i]
+            let width = model.widthList[i]
+            let frame = CGRect(x: x, y: y, width: width, height: height)
+            aPentominoViews.frame = frame
+        }
+        for aPentominoview in PentominoViews{
+            Pentominoes.append(Pentomino(pentominoView: aPentominoview))
+        }
+    }
     
     override func viewDidLoad() {
+        print(elementArea.bounds.size.width)
         super.viewDidLoad()
         resetBoardsButton()
         setBoardButton(index: 0)
@@ -93,41 +122,7 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        if counter != 1{
-            for aPentominoView in PentominoViews{
-                elementArea.addSubview(aPentominoView)
-            }
-            let unitX=(elementArea.bounds.size.width-40)/6
-            let unitY=(elementArea.bounds.size.height-40)/2
-            for i in 0...5 {
-                let aPentominoViews = PentominoViews[i]
-                let x:Double = (Double(20) + Double(i) * Double(unitX))
-                let y:Double = 20
-                let height:Double = model.heightList[i]
-                let width:Double = model.widthList[i]
-                let frame = CGRect(x: x, y: y, width: width, height: height)
-                aPentominoViews.frame = frame
-            }
-            for i in 6...11 {
-                let aPentominoViews = PentominoViews[i]
-                let x:Double =  Double(Double(20) + Double(i-6) * Double(unitX))
-                let y:Double = 20+Double(unitY)
-                let height = model.heightList[i]
-                let width = model.widthList[i]
-                let frame = CGRect(x: x, y: y, width: width, height: height)
-                aPentominoViews.frame = frame
-            }
-            for aPentominoview in PentominoViews{
-                Pentominoes.append(Pentomino(pentominoView: aPentominoview))
-            }
-            counter=counter+1
-            
-            
-            
-        }
-        
-        
+        print(elementArea.bounds.size.width)
         
         
     }
@@ -139,6 +134,7 @@ class ViewController: UIViewController {
         resetBoardsButton()
         setBoardButton(index: index)
         currentBoard=index
+        print(elementArea.bounds.size.width)
         if index==0{
             disableButton(button: solveButton)
             disableButton(button: resetButton)
