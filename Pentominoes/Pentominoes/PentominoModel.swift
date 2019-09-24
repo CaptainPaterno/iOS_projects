@@ -49,14 +49,24 @@ class Pentomino{
         self.positionOffBoard.centerX = Double(self.pentominoView.center.x)
         self.positionOffBoard.centerY = Double(self.pentominoView.center.y)
         self.positionOnBoard=PositionOnBoard(x: 0, y: 0, isFlipped: false, rotations: 0)
+        self.pentominoView.pentominoPointer=self
     }
     
     func setCorrectPosition(boardIndex:Int){
         self.currentBoard=boardIndex-1
-        self.positionOnBoard.x=model.allSolutions[currentBoard][pentominoView.shape]!.x
-        self.positionOnBoard.y=model.allSolutions[currentBoard][pentominoView.shape]!.y
-        self.positionOnBoard.isFlipped=model.allSolutions[currentBoard][pentominoView.shape]!.isFlipped
-        self.positionOnBoard.rotations=model.allSolutions[currentBoard][pentominoView.shape]!.rotations
+        if currentBoard == -1{
+            self.positionOnBoard.x=0
+            self.positionOnBoard.y=0
+            self.positionOnBoard.isFlipped=false
+            self.positionOnBoard.rotations=0
+        }else{
+            self.positionOnBoard.x=model.allSolutions[currentBoard][pentominoView.shape]!.x
+            self.positionOnBoard.y=model.allSolutions[currentBoard][pentominoView.shape]!.y
+            self.positionOnBoard.isFlipped=model.allSolutions[currentBoard][pentominoView.shape]!.isFlipped
+            self.positionOnBoard.rotations=model.allSolutions[currentBoard][pentominoView.shape]!.rotations
+        }
+
+        self.pentominoView.pentominoPointer=self
     }
     
 }
