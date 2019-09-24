@@ -36,7 +36,11 @@ class PentominoView: UIImageView{
 
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, HintDelegate {
+    func dismissHint() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     let colors=Colors()
     let PentominoViews : [PentominoView]
     var Pentominoes: [Pentomino]=[]
@@ -46,6 +50,7 @@ class ViewController: UIViewController {
     var coverView:UIView=UIView(frame: CGRect.zero)
     var isinitialized=false
     var isReset=false
+    var numberOfHints: Int = 0
     
     
     
@@ -276,35 +281,38 @@ class ViewController: UIViewController {
                 var newCenterY: CGFloat
                 let pentominoWidth=aPentominoView.bounds.size.width / CGFloat(30)
                 let pentominoHeight=aPentominoView.bounds.size.height / CGFloat(30)
-                if (pentominoWidth.truncatingRemainder(dividingBy: 3)==0 )  {
-                    if remainderX<15{
-                        newCenterX=originalCenterX-remainderX-15
-                    }else{
-                        newCenterX=originalCenterX+(30-remainderX)-15
-                    }
-                }else{
+                if (pentominoWidth.truncatingRemainder(dividingBy: 2)==0 )  {
                     if remainderX<15{
                         newCenterX=originalCenterX-remainderX
                     }else{
                         newCenterX=originalCenterX+(30-remainderX)
                     }
+                    
+                }else{
+                    if remainderX<15{
+                        newCenterX=originalCenterX-remainderX-15
+                    }else{
+                        newCenterX=originalCenterX+(30-remainderX)-15
+                    }
                 }
                     
-                if (pentominoHeight.truncatingRemainder(dividingBy: 3)==0)  {
-                    if remainderY<15{
-                        newCenterY=originalCenterY-remainderY-15
-                    }else{
-                        newCenterY=originalCenterY+(30-remainderY)-15
-                    }
-                }else{
+                if (pentominoHeight.truncatingRemainder(dividingBy: 2)==0)  {
                     if remainderY<15{
                         newCenterY=originalCenterY-remainderY
                     }else{
                         newCenterY=originalCenterY+(30-remainderY)
                     }
+                }else{
+                    if remainderY<15{
+                        newCenterY=originalCenterY-remainderY-15
+                    }else{
+                        newCenterY=originalCenterY+(30-remainderY)-15
+                    }
                 }
                 let newCenter = CGPoint(x: newCenterX,y: newCenterY)
-                aPentominoView.center=newCenter
+                UIView.animate(withDuration: 0.5, animations: { () -> Void in
+                    aPentominoView.center = newCenter
+                })
             }
             
         default:
@@ -371,7 +379,17 @@ class ViewController: UIViewController {
     }
     
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "HintSegue":
+            let hintViewController = segue.destination as! HintViewController
+            hintViewController.configure(with: self.Pentominoes, currentBoard: self.currentBoard, numberOfHints: self.numberOfHints)
+            hintViewController.delegate = self
+        default:
+            break
+        }
+        
+    }
 }
 
 
