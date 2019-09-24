@@ -24,6 +24,8 @@ class PentominoView: UIImageView{
 
     }
     
+    
+    
     required init?(coder aDecoder:NSCoder) {
         
         super.init(coder: aDecoder)
@@ -50,7 +52,7 @@ class ViewController: UIViewController, HintDelegate {
     var coverView:UIView=UIView(frame: CGRect.zero)
     var isinitialized=false
     var isReset=false
-    var numberOfHints: Int = 0
+    var numberOfHints: Int = -1
     
     
     
@@ -165,7 +167,7 @@ class ViewController: UIViewController, HintDelegate {
             enableButton(button: solveButton)
             enableButton(button: hintButton)
         }
-        
+        numberOfHints = -1
         
     }
     @IBAction func solve(_ sender: Any) {
@@ -178,6 +180,7 @@ class ViewController: UIViewController, HintDelegate {
             enableButton(button: solveButton)
         }
         for aPentomino in Pentominoes{
+            aPentomino.pentominoView.transform=CGAffineTransform.identity
             aPentomino.setCorrectPosition(boardIndex: currentBoard)
             rotateAndFlip(aPentomino: aPentomino)
             translate(aPentomino: aPentomino)
@@ -233,17 +236,21 @@ class ViewController: UIViewController, HintDelegate {
     
     @objc func rotate(_ sender: UITapGestureRecognizer){
         let aPentominoView = sender.view!
-        var transform = aPentominoView.transform
-        transform=transform.rotated(by: CGFloat(Double.pi/2))
-        UIView.animate(withDuration: 1,animations: {aPentominoView.transform=transform})
+        if aPentominoView.superview==coverView{
+            var transform = aPentominoView.transform
+            transform=transform.rotated(by: CGFloat(Double.pi/2))
+            UIView.animate(withDuration: 1,animations: {aPentominoView.transform=transform})
+            snap(aPentominoView: aPentominoView as! PentominoView)
+        }
     }
     
     @objc func flip(_ sender: UITapGestureRecognizer){
         let aPentominoView = sender.view!
-        var transform = aPentominoView.transform
-        transform=transform.scaledBy(x: -1, y: 1)
-        UIView.animate(withDuration: 1,animations: {aPentominoView.transform=transform})
-        
+        if aPentominoView.superview==coverView{
+            var transform = aPentominoView.transform
+            transform=transform.scaledBy(x: -1, y: 1)
+            UIView.animate(withDuration: 1,animations: {aPentominoView.transform=transform})
+        }
     }
     
     @objc func moveViewOBJC(_ sender: UIPanGestureRecognizer){
@@ -251,7 +258,7 @@ class ViewController: UIViewController, HintDelegate {
         
         switch sender.state {
         case .began:
-            aPentominoView.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+            aPentominoView.transform = aPentominoView.transform.scaledBy(x: 1.15, y: 1.15)
             //self.view.bringSubviewToFront(aPentominoView)
             //let location = sender.location(in: self.elementArea)
             //aPentominoView.center=location
@@ -264,7 +271,7 @@ class ViewController: UIViewController, HintDelegate {
             let location = sender.location(in: self.TopView)
             aPentominoView.center = location
         case .ended:
-            aPentominoView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            aPentominoView.transform = aPentominoView.transform.scaledBy(x: (1/1.15), y: (1/1.15))
             let newCenter = coverView.convert(aPentominoView.center, from: aPentominoView.superview)
             coverView.addSubview(aPentominoView)
             aPentominoView.center = newCenter
@@ -273,53 +280,56 @@ class ViewController: UIViewController, HintDelegate {
             if coverView.bounds.contains(aPentominoView.frame)==false{
                 translate(aPentomino: aPentominoView.pentominoPointer!)
             } else{
-                let originalCenterX=aPentominoView.center.x
-                let originalCenterY=aPentominoView.center.y
-                let remainderX=originalCenterX.truncatingRemainder(dividingBy: 30)
-                let remainderY=originalCenterY.truncatingRemainder(dividingBy: 30)
-                var newCenterX: CGFloat
-                var newCenterY: CGFloat
-                let pentominoWidth=aPentominoView.bounds.size.width / CGFloat(30)
-                let pentominoHeight=aPentominoView.bounds.size.height / CGFloat(30)
-                if (pentominoWidth.truncatingRemainder(dividingBy: 2)==0 )  {
-                    if remainderX<15{
-                        newCenterX=originalCenterX-remainderX
-                    }else{
-                        newCenterX=originalCenterX+(30-remainderX)
-                    }
-                    
-                }else{
-                    if remainderX<15{
-                        newCenterX=originalCenterX-remainderX-15
-                    }else{
-                        newCenterX=originalCenterX+(30-remainderX)-15
-                    }
-                }
-                    
-                if (pentominoHeight.truncatingRemainder(dividingBy: 2)==0)  {
-                    if remainderY<15{
-                        newCenterY=originalCenterY-remainderY
-                    }else{
-                        newCenterY=originalCenterY+(30-remainderY)
-                    }
-                }else{
-                    if remainderY<15{
-                        newCenterY=originalCenterY-remainderY-15
-                    }else{
-                        newCenterY=originalCenterY+(30-remainderY)-15
-                    }
-                }
-                let newCenter = CGPoint(x: newCenterX,y: newCenterY)
-                UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                    aPentominoView.center = newCenter
-                })
+                snap(aPentominoView: aPentominoView)
             }
             
         default:
             break
         }
     }
-
+    
+    func snap(aPentominoView : PentominoView){
+        let originalCenterX=aPentominoView.center.x
+        let originalCenterY=aPentominoView.center.y
+        let remainderX=originalCenterX.truncatingRemainder(dividingBy: 30)
+        let remainderY=originalCenterY.truncatingRemainder(dividingBy: 30)
+        var newCenterX: CGFloat
+        var newCenterY: CGFloat
+        let pentominoWidth=aPentominoView.bounds.size.width / CGFloat(30)
+        let pentominoHeight=aPentominoView.bounds.size.height / CGFloat(30)
+        if (pentominoWidth.truncatingRemainder(dividingBy: 2)==0 )  {
+            if remainderX<15{
+                newCenterX=originalCenterX-remainderX
+            }else{
+                newCenterX=originalCenterX+(30-remainderX)
+            }
+            
+        }else{
+            if remainderX<15{
+                newCenterX=originalCenterX-remainderX-15
+            }else{
+                newCenterX=originalCenterX+(30-remainderX)-15
+            }
+        }
+        
+        if (pentominoHeight.truncatingRemainder(dividingBy: 2)==0)  {
+            if remainderY<15{
+                newCenterY=originalCenterY-remainderY
+            }else{
+                newCenterY=originalCenterY+(30-remainderY)
+            }
+        }else{
+            if remainderY<15{
+                newCenterY=originalCenterY-remainderY-15
+            }else{
+                newCenterY=originalCenterY+(30-remainderY)-15
+            }
+        }
+        let newCenter = CGPoint(x: newCenterX,y: newCenterY)
+        UIView.animate(withDuration: 0.5, animations: { () -> Void in
+            aPentominoView.center = newCenter
+        })
+    }
     
     func moveView(_ view:UIView, toSuperview superView: UIView) {
         let newCenter = superView.convert(view.center, from: view.superview)
@@ -382,8 +392,9 @@ class ViewController: UIViewController, HintDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "HintSegue":
+            numberOfHints=numberOfHints+1
             let hintViewController = segue.destination as! HintViewController
-            hintViewController.configure(with: self.Pentominoes, currentBoard: self.currentBoard, numberOfHints: self.numberOfHints)
+            hintViewController.configure(with: self.currentBoard, numberOfHints: self.numberOfHints)
             hintViewController.delegate = self
         default:
             break
