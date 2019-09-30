@@ -50,17 +50,20 @@ class ViewController: UIViewController,UIScrollViewDelegate {
     var currentPage : PageNumber {return PageNumber(x: currentPageX, y: currentPageY)}
 
     @IBOutlet weak var masterScrollView: UIScrollView!
+    
     typealias parkPictures = [UIImageView]
     var pictures:[parkPictures]=[]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
+        masterScrollView.delegate=self
+        masterScrollView.isPagingEnabled=true
         for index in 0...model.allParks.count-1{
             let aParkScrollView=ParkScrollView()
             aParkScrollView.name=model.allParks[index].name
             aParkScrollView.count=model.allParks[index].count
+            aParkScrollView.isPagingEnabled=true
             masterScrollView.addSubview(aParkScrollView)
             parkList.append(aParkScrollView)
             var aParkPictures = parkPictures()
@@ -68,10 +71,12 @@ class ViewController: UIViewController,UIScrollViewDelegate {
                 let fileName = aParkScrollView.name! + "0" + "\(count+1)"
                 let image=UIImage(named: fileName)
                 let aPictureView = PictureView(image: image)
+                aPictureView.contentMode = .scaleAspectFit
                 aParkPictures.append(aPictureView)
                 let aPictureScrollView = PictureScrollView()
                 aPictureScrollView.delegate = self
                 aPictureScrollView.addSubview(aPictureView)
+                aPictureScrollView.isPagingEnabled=true
                 aParkScrollView.addSubview(aPictureScrollView)
                 aParkScrollView.PictureList.append(aPictureScrollView)
             }
@@ -90,11 +95,17 @@ class ViewController: UIViewController,UIScrollViewDelegate {
             aParkScrollView.contentSize=CGSize(width: singleImageSize.width, height: singleImageSize.height*CGFloat(aParkScrollView.count!))
             for count in 0...aParkScrollView.count!-1{
                 let aPictureScrollView=aParkScrollView.PictureList[count]
+                
                 let imageScrollViewOrigin=CGPoint(x:0,y: CGFloat(count)*singleImageSize.height)
                 aPictureScrollView.frame=CGRect(origin: imageScrollViewOrigin, size: singleImageSize)
-                let scale = scaleFor(size: pictures[index][count].image!.size)
-                aPictureScrollView.setZoomScale(0.001, animated: false)
-                aPictureScrollView.minimumZoomScale = 0.001
+                let aPictureView = pictures[index][count]
+                let scale = Double(scaleFor(size: aPictureView.image!.size))
+                aPictureView.frame=CGRect(x: 0, y: 0, width: Double(aPictureView.image!.size.width)*scale, height: Double(aPictureView.image!.size.height)*scale)
+                aPictureScrollView.contentSize = singleImageSize
+              
+                
+                
+                
 
             }
         }
@@ -113,7 +124,20 @@ class ViewController: UIViewController,UIScrollViewDelegate {
         return pictures[currentPage.row][currentPage.col]
     }
     
+    func goto(){
+        let point = CGPoint(x: CGFloat(currentPageX)*singleImageSize.width, y: CGFloat(currentPageY)*singleImageSize.height)
+        masterScrollView.setContentOffset(point, animated: true)
+        
+    }
     
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        //print(currentPageX)
+        //print(currentPageY)
+        //goto()
+        
+        
+    }
 
     
     
