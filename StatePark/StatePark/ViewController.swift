@@ -132,7 +132,7 @@ class ViewController: UIViewController,UIScrollViewDelegate,UIGestureRecognizerD
             coverScrollView.minimumZoomScale=10
             coverScrollView.maximumZoomScale=100
             imageViewForZooming.image=currentPicture.image
-            coverScrollView.frame=CGRect(origin: masterScrollView.frame.origin, size: masterScrollView.frame.size)            //imageViewForZooming.frame=CGRect(x: Double(singleImageSize.width/2)-(Double(currentPicture.image!.size.width)*scale/2), y: Double(singleImageSize.height/2)-(Double(currentPicture.image!.size.height)*scale/2), width: Double(currentPicture.image!.size.width)*scale, height:Double(currentPicture.image!.size.height)*scale)
+            coverScrollView.frame=CGRect(origin: masterScrollView.frame.origin, size: masterScrollView.frame.size)            
             imageViewForZooming.frame=CGRect(x: 0, y: 0, width: Double(currentPicture.image!.size.width)*scale, height:Double(currentPicture.image!.size.height)*scale)
             imageViewForZooming.center=centerForImage()
             coverScrollView.contentSize=CGSize(width: imageViewForZooming.image!.size.width*CGFloat(scale), height: imageViewForZooming.image!.size.height*CGFloat(scale))
@@ -144,15 +144,8 @@ class ViewController: UIViewController,UIScrollViewDelegate,UIGestureRecognizerD
             
         case .changed:
             let senderScale=sender.scale
-            let currentZoomScale=coverScrollView.zoomScale
             coverScrollView.setZoomScale(coverScrollView.zoomScale+senderScale, animated: false)
-        case .ended:
-            let currentZoomScale=coverScrollView.zoomScale
-            let minimumZoomScale=coverScrollView.minimumZoomScale
-            //if coverScrollView.zoomScale==coverScrollView.minimumZoomScale{
-                //self.view.bringSubviewToFront(masterScrollView)
-                //self.view.sendSubviewToBack(coverScrollView)
-            //}
+        
         default:
             break
         }
