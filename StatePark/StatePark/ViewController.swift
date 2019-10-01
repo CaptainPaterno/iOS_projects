@@ -231,8 +231,6 @@ class ViewController: UIViewController,UIScrollViewDelegate,UIGestureRecognizerD
         currentPageVerticalY = Int(Double(parkList[currentPageMasterX!].contentOffset.y)/Double(singleImageSize.height))
         if(currentPageVerticalY != 0){
             
-            print(currentPageVerticalY!)
-            print(parkList[currentPageMasterX!].count!)
             if (currentPageVerticalY==parkList[currentPageMasterX!].count!-1){
                 downArrow.isHidden=true
             }else{
