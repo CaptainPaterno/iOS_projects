@@ -19,8 +19,9 @@ struct ParkInfo:Codable {
 typealias parkinfo = ParkInfo
 typealias parksInfo = [parkinfo]
 
+
 class Model{
-    let allParks: parksInfo
+    var allParks: parksInfo
     
     init () {
         let mainBundle = Bundle.main

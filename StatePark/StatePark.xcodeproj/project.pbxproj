@@ -15,6 +15,10 @@
 		926B2DD823417D8900925312 /* StateParkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B2DD723417D8900925312 /* StateParkTests.swift */; };
 		926B2DE323417EF700925312 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926B2DE223417EF700925312 /* Model.swift */; };
 		926B2DE523417FA600925312 /* Parks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 926B2DE423417FA600925312 /* Parks.plist */; };
+		92C136B3234ABA0B007483E2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C136B2234ABA0B007483E2 /* TableViewCell.swift */; };
+		92C136B7234ABA4A007483E2 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C136B6234ABA4A007483E2 /* TableViewController.swift */; };
+		92C136B9234ABA64007483E2 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C136B8234ABA64007483E2 /* CollectionViewController.swift */; };
+		92C136C0234ABB10007483E2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C136BF234ABB10007483E2 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,10 @@
 		926B2DD923417D8900925312 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		926B2DE223417EF700925312 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		926B2DE423417FA600925312 /* Parks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Parks.plist; sourceTree = "<group>"; };
+		92C136B2234ABA0B007483E2 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		92C136B6234ABA4A007483E2 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		92C136B8234ABA64007483E2 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		92C136BF234ABB10007483E2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +89,10 @@
 		926B2DC123417D8800925312 /* StatePark */ = {
 			isa = PBXGroup;
 			children = (
+				92C136C4234ABB57007483E2 /* Cells */,
+				92C136C1234ABB1B007483E2 /* model */,
+				92C136BB234ABAB3007483E2 /* ViewControllers */,
 				926B2DC223417D8800925312 /* AppDelegate.swift */,
-				926B2DC423417D8800925312 /* ViewController.swift */,
 				926B2DC623417D8800925312 /* Main.storyboard */,
 				926B2DC923417D8900925312 /* Assets.xcassets */,
 				926B2DCB23417D8900925312 /* LaunchScreen.storyboard */,
@@ -100,6 +110,32 @@
 				926B2DD923417D8900925312 /* Info.plist */,
 			);
 			path = StateParkTests;
+			sourceTree = "<group>";
+		};
+		92C136BB234ABAB3007483E2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				92C136B6234ABA4A007483E2 /* TableViewController.swift */,
+				92C136B8234ABA64007483E2 /* CollectionViewController.swift */,
+				926B2DC423417D8800925312 /* ViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		92C136C1234ABB1B007483E2 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		92C136C4234ABB57007483E2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				92C136B2234ABA0B007483E2 /* TableViewCell.swift */,
+				92C136BF234ABB10007483E2 /* CollectionViewCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +240,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92C136B9234ABA64007483E2 /* CollectionViewController.swift in Sources */,
 				926B2DE323417EF700925312 /* Model.swift in Sources */,
+				92C136B3234ABA0B007483E2 /* TableViewCell.swift in Sources */,
+				92C136C0234ABB10007483E2 /* CollectionViewCell.swift in Sources */,
 				926B2DC523417D8800925312 /* ViewController.swift in Sources */,
+				92C136B7234ABA4A007483E2 /* TableViewController.swift in Sources */,
 				926B2DC323417D8800925312 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
